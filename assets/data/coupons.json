@@ -1,0 +1,17 @@
+{
+  "save5": {
+    "minTotal": 0,
+    "disAmt": 5,
+    "errorMess": ""
+  },
+  "save10": {
+    "minTotal": 50,
+    "disAmt": 10,
+    "errorMess": "Minimum amount needs to be 50 pound"
+  },
+  "save15": {
+    "minTotal": 75,
+    "disAmt": 15,
+    "errorMess": "Minimum amount needs to be 75 pound"
+  }
+}
