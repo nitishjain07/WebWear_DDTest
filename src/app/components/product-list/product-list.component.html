@@ -1,0 +1,29 @@
+<h1>Clothings for Men and Women <span *ngIf="this.productList.length>0">- {{this.productList.length}} items</span></h1>
+<section class="product-item-con">
+  <mat-card class="product-item" [ngClass]="{'out-of-stock': item.qtyInStck === 0}" *ngFor="let item of productList">
+    <img mat-card-image class="img-fluid" [src]="'assets/images/products/'+item.imgSrc" [alt]="item.name">
+    <mat-card-content>
+      <h5>{{item.name}}</h5>
+      <h6>{{item.category}}</h6>
+      <p *ngIf="item.disPrice">Price: {{item.disPrice | currency:'EUR'}} <span> {{item.price | currency:'EUR'}}</span></p>
+      <p *ngIf="!item.disPrice">Price: {{item.price | currency:'EUR'}}</p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="item.qtyInStck > 0">
+      <button mat-raised-button class="w-100" *ngIf="!item.added" color="accent" (click)="shareCartDataService.addToCart(item)">Add to cart</button>
+      <div *ngIf="item.added" class="added-item-action-con">
+          <button mat-icon-button (click)="shareCartDataService.decItem(item)">
+            <i class="material-icons">remove_circle_outline</i>
+          </button>
+          <input type="text" disabled [value]="item.addedQty" />
+          <button mat-icon-button (click)="shareCartDataService.incItem(item)">
+            <i class="material-icons">add_circle_outline</i>
+          </button>
+      </div>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="item.qtyInStck === 0">
+      <div class="alert alert-danger" role="alert">
+        <strong>Out Of Stock</strong>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</section>

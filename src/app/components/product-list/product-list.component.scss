@@ -1,0 +1,110 @@
+@import "~src/scss/mixins";
+@import "~src/scss/variables";
+
+h1 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.product-item-con {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  width: 23.5%;
+  margin-right: 2%;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  &:nth-child(4n) {
+    margin-right: 0;  
+  }
+  @include mqueryipad(768px, 1024px) {
+    width: 32%;
+    &:nth-child(4n) {
+      margin-right: 2%;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @include mqueryphone(320px, 767px) {
+    width: 100%;
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+  .alert-danger {
+    margin: 0;
+    text-align: center;
+    padding: 5px 0;
+  }
+  &.out-of-stock {
+    opacity: 0.6;
+  }
+}
+
+.mat-card-image {
+  height: 200px;
+  width: auto;
+  margin: 10px auto 20px auto;
+  display: block;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.mat-card-content {
+  margin-bottom: auto;
+  h5 {
+    min-height: 35px;
+    font-size: 16px;
+  }
+  h6 {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  >p {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    >span {
+      text-decoration: line-through;
+      font-size: 12px
+    }
+  }
+}
+
+.mat-card> {
+  .mat-card-actions {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.added-item-action-con {
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+  input {
+    width: 15%;
+    text-align: center;
+    width: 40px;
+    border-radius: 4px;
+    margin: 0 2px;
+    background: #fff;
+    border: 1px solid;
+  }
+  button {
+    color: rgba($color_matIcon,.87);
+    .material-icons {
+      font-size: 20px;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

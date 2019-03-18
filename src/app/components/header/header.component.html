@@ -1,0 +1,11 @@
+<header>
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <a class="navbar-brand" [routerLink]="['/product-list']">
+      <img src="assets/images/WebWearLogo.png" alt="WebWear Logo" class="img-fluid" />
+    </a>
+    <a href="javascript:void(0)" class="login-link">Login</a>
+    <a [routerLink]="['/cart']">
+      <i [matBadge]="cartItemsCount" matBadgeColor="warn" class="material-icons">shopping_cart</i>
+    </a>
+  </nav>
+</header>

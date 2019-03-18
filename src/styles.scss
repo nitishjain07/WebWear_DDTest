@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+}
+
+app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+app-footer {
+  margin-top: auto;
+}
+
+.mat-simple-snackbar {
+  font-weight: 700;
+}
+
+.price-summary {
+  mat-form-field {
+    .mat-form-field-infix {
+      padding-bottom: 25px;
+    }
+  }
+}

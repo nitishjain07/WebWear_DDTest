@@ -1,0 +1,61 @@
+<!-- section to show if cart is empty starts-->
+<section class="empty-cart" *ngIf="cartItems.length === 0">
+  <a [routerLink]="['/product-list']">
+    <i class="material-icons">add_shopping_cart</i>
+  </a>
+  <p><strong>Hey, it feels so light!</strong> Your Shopping Cart is empty.</p>
+</section>
+<!-- section to show if cart is empty ends-->
+
+<!-- section to show if cart is not empty starts-->
+<section *ngIf="cartItems.length > 0" class="row">
+  <!-- left cart items section starts -->
+  <div class="col-md-8">
+    <div class="cart-item-con" *ngFor="let item of cartItems">
+      <div class="cart-item-left-con">
+        <img [src]="'assets/images/products/'+item.imgSrc" class="img-fluid" [alt]="item.name">
+      </div>
+
+      <div class="cart-item-right-con">
+        <h6>
+          <span>{{item.name}}</span> 
+          <span>{{item.disPrice?item.disPrice*item.addedQty:item.price*item.addedQty | currency:'EUR'}}</span>
+        </h6>
+        <p>{{item.category}}</p>
+        <div class="added-item-desc-con">
+            <button mat-icon-button (click)="shareCartDataService.decItem(item);updatePrice()">
+              <i class="material-icons">remove_circle_outline</i>
+            </button>
+            <input type="text" disabled [value]="item.addedQty" />
+            <button mat-icon-button (click)="shareCartDataService.incItem(item);updatePrice()">
+              <i class="material-icons">add_circle_outline</i>
+            </button>
+            <button mat-stroked-button (click)="shareCartDataService.removeItem(item);updatePrice()">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- left cart items section ends -->
+
+  <!-- right price summary section starts -->
+  <div class="col-md-4 price-summary">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Coupon" [(ngModel)]="couponCode">
+      <button mat-stroked-button matSuffix color="primary" (click)="getCoupons()" [disabled]="couponCode === ''">Apply</button>
+      <mat-hint *ngIf="couponMessage">{{couponMessage}}</mat-hint>
+    </mat-form-field>
+
+    <h5>Price Details</h5>
+    <p>Total Price <span>{{totalPrice | currency:'EUR'}}</span></p>
+    <p>Coupon Discount
+      <span *ngIf="!cpnDiscount || cpnDiscount === 0">Apply Coupon</span>
+      <span *ngIf="cpnDiscount > 0">{{cpnDiscount | currency:'EUR'}}</span>
+    </p>
+    <p>Delivery Charge <span>FREE</span></p>
+    <p class="total">Total <span>{{total | currency:'EUR'}}</span></p>
+    <!-- dummy button with no functionality -->
+    <button mat-raised-button color="accent" class="w-100 mt-2">Place Order</button>
+  </div>
+  <!-- right price summary section ends -->
+</section>
+<!-- section to show if cart is not empty ends-->

@@ -1,0 +1,52 @@
+@mixin vendorize($property, $value) {
+-webkit-#{$property}: $value;
+-moz-#{$property}: $value;
+-ms-#{$property}: $value;
+-o-#{$property}: $value;
+#{$property}: $value;
+}
+
+@mixin hoverActiveFocus($property, $value) {
+  &:hover, &:active, &:focus {
+      #{$property}: $value;
+  }
+}
+
+@mixin mqueryipad($args...) {
+  @media only screen 
+  and (min-device-width : nth($args, 1)) 
+  and (max-device-width : nth($args, 2)) 
+  and (-webkit-min-device-pixel-ratio: 1){
+      @content;
+  }
+
+  @media only screen 
+  and (min-device-width : nth($args, 1)) 
+  and (max-device-width : nth($args, 2))
+  and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+  }
+
+  @media only screen 
+  and (min-device-width : nth($args, 1)) 
+  and (max-device-width : nth($args, 2))  {
+      @content;
+  }
+
+  @media (min-width: nth($args, 1))
+      and (max-width: nth($args, 2)) {
+      @content;
+  }
+}
+
+@mixin mqueryphone($args...) {
+  @media only screen 
+  and (min-device-width : nth($args, 1)) 
+  and (max-device-width : nth($args, 2))  {
+      @content;
+  }
+  @media (min-width: nth($args, 1))
+      and (max-width: nth($args, 2)) {
+      @content;
+  }
+}
