@@ -19,6 +19,7 @@ approach
 4. same functionality is reused in cart page which also show pricing section.
 5. For coupon functionality, api call is made to get valid coupons for only first time and then coupon is applied based on availability and validity.
 6. Created variable and mixins scss files to leverage the advantages of scss.
+7. Valid Coupon Code's which can be seen in coupons.json file too are - save5, save10 and save15. Validity criteria has been set accoding to the requirement.
 
 
 
